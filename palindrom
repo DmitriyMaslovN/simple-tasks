@@ -1,0 +1,9 @@
+let initialText = prompt('input value include palindrome', '')
+let exp;
+if(initialText.split('').reverse().join('') == initialText.split('').join(''))
+  document.write(initialText);
+if(/(.)\1/.test(initialText)) exp = /(.)\1/.exec(initialText);
+if(/(.)(.)\2\1/.test(initialText)) exp = /(.)(.)\2\1/.exec(initialText);
+if(/(.)(.)(.)\3\2\1/.test(initialText)) exp = /(.)(.)(.)\3\2\1/.exec(initialText);
+if(/(.)(.)(.)(.)\4\3\2\1/.test(initialText)) exp = /(.)(.)(.)(.)\4\3\2\1/.exec(initialText);
+document.write(exp[0]);
