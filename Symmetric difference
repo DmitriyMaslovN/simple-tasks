@@ -1,0 +1,16 @@
+function sym(){
+  let allElemArgs = Array.prototype.slice.call(arguments);
+  let arr = [];
+  
+  let diffElem = (firstArr, seconArr){
+    return firstArr.filter((item, i, firstArr) => {
+            return !secondArr.includes(item) && i === firstArr.indexOf(item)
+            }) // place index equal only one number
+          .concat(
+          secondArr.filter((item, i, secondArr)=>{
+            return  !firstArr.includes(item) && i === secondArr.indexOf(item)
+    })
+    );
+    return arr = allElemArgs.reduce(diffElem).sort() // do step by step
+}
+sym([1,4,2,3,3], [5,4,2,2,6]) // 1,3,5,6
