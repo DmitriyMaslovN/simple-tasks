@@ -1,0 +1,40 @@
+function updateInventory(arr1, arr2) {
+    // All inventory must be accounted for or you're fired!
+    console.log(arr2.length > 1)
+    let arr = [];
+    let result = [];
+    result.push(...arr1, ...arr2)
+    result.forEach((item1, index1, result) =>{
+            if(item1[1] === item1[1] && arr1.length > 1 || arr2.length > 1){
+               result.splice(index1, 1); // get old and new values
+           }   
+    });
+     arr1.forEach((item1, index1, arr1) =>{
+        arr2.forEach((item2, index2, arr2)=>{   
+            if(item1[1] === item2[1]){
+             arr.push([item1[0] + item2[0], item1[1]]); // get updated values and update quantity
+           }
+        })    
+    });
+   
+   result.push(...arr);
+   return result.sort((a,b)=> a[1] > b[1] ? 1 : -1);
+}
+
+// Example inventory lists
+var curInv = [
+    [21, "Bowling Ball"],
+    [2, "Dirty Sock"],
+    [1, "Hair Pin"],
+    [5, "Microphone"]
+];
+
+var newInv = [
+    [2, "Hair Pin"],
+    [3, "Half-Eaten Apple"],
+    [67, "Bowling Ball"],
+    [7, "Toothpaste"]
+];
+
+updateInventory(curInv, newInv); // 88,Bowling Ball,2,Dirty Sock,3,Hair Pin,3,Half-Eaten Apple,5,Microphone,7,Toothpaste
+updateInventory([[21, "Bowling Ball"], [2, "Dirty Sock"], [1, "Hair Pin"], [5, "Microphone"]], []); //21,Bowling Ball,2,Dirty Sock,1,Hair Pin,5,Microphone
