@@ -1,0 +1,32 @@
+function permAlone(input) {
+  let arrResults = [];
+  let strInp = input;
+
+  function resPerm(str){
+    let results = [];
+    if (str.length === 1) {
+          results.push(str);
+        };
+    for (let i = 0; i < str.length; i++) {
+      let char = str[i]; // the first character: a, b...
+      let elseChar = str.slice(0, i) + str.slice(i + 1); //sec. char: b + c,...
+      let perm = resPerm(elseChar);
+      perm.forEach((item, index) => {
+        results.push(char + perm[index]); // create full string: 'abc'
+      })  
+    } 
+   
+      return results;
+    }
+  arrResults = resPerm(strInp); //send data and receive result
+  let lengthArr = arrResults.filter((item, i)=>{
+        if(!/(.)\1+/g.test(item)){ // aa, cc...
+          return item;
+        }
+      })
+  return lengthArr.length
+}
+
+permAlone("abcdefa"); // 3600
+permAlone("zzzzzzzz"); // 0
+/* source code https://initjs.org/all-permutations-of-a-set-f1be174c79f8*/
