@@ -1,0 +1,18 @@
+function pairwise(arr, arg) {
+  let iNum = [];
+  for(let i = 0; i < arr.length; i++){
+    for(let j = 1; j < arr.length; j++){ // start the sec. position
+      if(arr[i] + arr[j] === arg && i !== j ){ 
+        iNum.push(i + j);
+        arr[i] = arr[j] = NaN; // get rid from used numbers
+      }
+    }
+  }
+return iNum.reduce((sum, curr)=>{
+  return sum + curr;
+},0)
+}
+
+pairwise([1,4,2,3,0,5], 7); // 11
+pairwise([0, 0, 0, 0, 1, 1], 1); // 10
+pairwise([1, 1, 1], 2); // 1
