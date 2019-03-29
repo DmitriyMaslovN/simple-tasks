@@ -1,0 +1,14 @@
+function insertionSort(array) {
+    for(let i = 0; i < array.length; i++) {
+        let x = array[i];
+        let j = i - 1;
+        while (j >= 0 && array[j] > x) { // previous value greater then current
+            array[j + 1] = array[j]; // previous position + 1 
+            j = j - 1;
+        }
+        array[j+1] = x;  // return original value
+    }
+    return array; 
+}
+
+insertionSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]); // 1,1,2,2,4....
