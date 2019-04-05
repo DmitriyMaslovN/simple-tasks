@@ -1,0 +1,17 @@
+const arr = ["xvx", "cc", "vv", "pdp", "lkl"];
+
+const func = (data) => {
+  let arr = [];
+  let length = '';
+  let result = [];
+  data.forEach((item, i) => {
+    arr.push(item.length)
+  })
+ length = Math.max(...arr)
+ data.forEach((elem)=>{
+   if(elem.length === length)
+     result.push(elem);
+ })
+  return result;
+}
+func(arr);
