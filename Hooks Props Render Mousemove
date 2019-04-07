@@ -1,0 +1,43 @@
+const { useState, useEffect } = React; // codepen
+
+function Cat(props) {
+  //const isCoords = useMouse();
+  const [coord, setCoord] = useState({
+    x: 10,
+    y: 60
+  });
+  const MouseMove = () => setCoord({x: props.x -20, y: props.y - 30 });
+
+    return (
+    <div onMouseMove={MouseMove}>
+      <img src="http://www.fillster.com/images/pictures/81g.jpg" width="60" style={{ position: 'absolute', left: coord.x, top: coord.y }} />
+    </div>
+    );
+}
+
+function useMouse(){
+  const [coords, setCoords] = useState({
+    x: 0,
+    y: 0
+  });
+  const MouseMove = (e) => setCoords({x: e.clientX, y: e.clientY});
+  
+  useEffect(()=>{
+    window.addEventListener("mousemove", MouseMove);
+    return () => window.removeEventListener("mousemove", MouseMove)
+  }, [coords])
+
+  return  coords;
+}
+
+function MouseTracker() {
+   const isCoords = useMouse();
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        {Cat(isCoords)}
+      </div>
+    );
+}
+
+ReactDOM.render(<MouseTracker/>, document.getElementById("root"))
