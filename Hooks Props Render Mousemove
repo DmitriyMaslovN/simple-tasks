@@ -25,7 +25,7 @@ function useMouse(){
   useEffect(()=>{
     window.addEventListener("mousemove", MouseMove);
     return () => window.removeEventListener("mousemove", MouseMove)
-  }, [coords])
+  }, [coords]) // ,[] rerender only if change.
 
   return  coords;
 }
