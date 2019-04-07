@@ -1,7 +1,7 @@
 const { useState, useEffect } = React; // codepen
 
-function Cat(props) {
-  //const isCoords = useMouse();
+function Cat(props) { // props render
+  //const props = useMouse(); // props render
   const [coord, setCoord] = useState({
     x: 10,
     y: 60
