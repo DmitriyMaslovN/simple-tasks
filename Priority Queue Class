@@ -1,0 +1,46 @@
+function PriorityQueue () {
+    this.collection = [];
+    this.printCollection = function() {
+      console.log(this.collection);  
+    };
+    
+    this.enqueue = (val) => { 
+      if(this.isEmpty()){
+        this.collection.push(val)
+      }
+       this.collection.reverse(); // first in
+      let index = this.collection.findIndex(item => {
+       return val[1] >= item[1]       
+        });
+     
+        if (index >= 0) {
+           this.collection.splice(index, 0, val); 
+        } else {
+            this.collection.push(val);
+        }
+      this.collection.reverse(); // first out
+    }
+    this.dequeue = () => {
+        return this.collection.shift()[0];
+    }
+    this.size = () => {
+       return this.collection.length;
+    }
+    this.front = () => {
+        return this.collection[0];
+    }
+    this.isEmpty = () => {
+      return this.collection.length === 0;
+    }
+    
+}
+let arr = new PriorityQueue();
+
+arr.enqueue( ['dog', 2] );
+arr.enqueue(['rabbit', 2]);
+arr.enqueue(['kitten', 3]);
+arr.enqueue( ['human', 1] );
+arr.enqueue(['kitten', 2]);
+
+//[['human',1],['dog',2],['rabbit',2],['kitten',2],[;kitten',3]]
+arr.printCollection()
