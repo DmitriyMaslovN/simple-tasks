@@ -5,9 +5,6 @@ function PriorityQueue () {
     };
     
     this.enqueue = (val) => { 
-      if(this.isEmpty()){
-        this.collection.push(val)
-      }
        this.collection.reverse(); // first in
       let index = this.collection.findIndex(item => {
        return val[1] >= item[1]       
