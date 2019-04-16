@@ -4,7 +4,6 @@ function Stack() {
     this.print = function() {
         console.log(collection);
     };
-    // Only change code below this line
     this.push = (val) => {
         collection[this._i++] = val;
         return this._i; //
