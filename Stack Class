@@ -17,8 +17,36 @@ function Stack() {
     this.peek = () => collection[this._i - 1];
     this.isEmpty = () => collection[collection.length] !== '';
     this.clear = () => collection = [];
-    // Only change code above this line
 }
 let objArr = new Stack();
 
 console.log(objArr.peek()); // last elem in current stack
+
+// with length of the stack
+function Stack() { 
+    constructor(capacity){
+    this.collection = [];
+    this._i = 0;
+    this.capacity = capacity;
+    }
+    this.print = function() {
+        console.log(this.collection);
+    };
+    // Only change code below this line
+    this.push = (val) => {
+    if(this._i < this.capacity){
+        this.collection[this._i++] = val;
+        return this._i; //
+        };
+      return "Too much elements in the stack"
+      }  
+    this.pop = () => {
+        let val = this.collection[--this._i];
+        if(this._i < 0) this._i = 0;
+        return val;
+    }
+    this.peek = () => this.collection[this._i - 1];
+    this.isEmpty = () => this.collection[collection.length] !== '';
+    this.clear = () => this.collection = [];
+}
+let objArr = new Stack()
