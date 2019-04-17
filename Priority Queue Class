@@ -31,13 +31,13 @@ function PriorityQueue () {
     }
     
 }
-let arr = new PriorityQueue();
+let obj = new PriorityQueue();
 
-arr.enqueue( ['dog', 2] );
-arr.enqueue(['rabbit', 2]);
-arr.enqueue(['kitten', 3]);
-arr.enqueue( ['human', 1] );
-arr.enqueue(['kitten', 2]);
+obj.enqueue( ['dog', 2] );
+obj.enqueue(['rabbit', 2]);
+obj.enqueue(['kitten', 3]);
+obj.enqueue( ['human', 1] );
+obj.enqueue(['kitten', 2]);
 
 //[['human',1],['dog',2],['rabbit',2],['kitten',2],[;kitten',3]]
-arr.printCollection()
+obj.printCollection()
