@@ -1,0 +1,47 @@
+var called = 0;
+var hash = (string) => {
+  called++;
+  var hash = 0;
+  for (var i = 0; i < string.length; i++) { hash += string.charCodeAt(i); }
+  return hash;
+};
+var HashTable = function() {
+  this.collection = {};
+
+  this.add = (key, value) => {
+    let hashKey = hash(key);
+   
+    if( this.collection[hashKey] ){ // to the same key add a new value
+  
+      if(Object.values(this.collection[hashKey][key])[0] !== value){
+          this.collection[hashKey][key] = 
+            [...this.collection[hashKey][key], value]; // add value in exists prop
+        }
+    }else {
+      this.collection[hashKey] = {}; // always create new hash obj
+      this.collection[hashKey][key] = value; // add value
+      
+    }
+
+  }
+  this.lookup = (key) => {
+      let hashKey = hash(key);
+        if(this.collection[hashKey].hasOwnProperty(key)){
+          return  this.collection[hashKey][key];
+        }else{
+          return null
+        }
+  
+  }
+  this.remove = (key) => {
+      let hashKey = hash(key);
+       delete this.collection[hashKey][key]; // delete pair key-value
+      }
+};
+let hashtable = new HashTable();
+hashtable.add('global', 'global' );
+hashtable.add('aerobus', 'a');
+hashtable.add('aerobus', 'thunder');
+hashtable.add('aerobus', 'a'); // won't write
+hashtable.remove('aerobus');
+hashtable.lookup('aerobus')
