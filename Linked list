@@ -104,12 +104,15 @@ function LinkedList() {
         let currentNode = head;
         let previousNode;
         let newNode = new Node(element);
+        
        if(index == 0){
          let obj = head;
          newNode.next = obj.next;
          currentNode.next = newNode;
-         console.log(head)
-       }else{
+         length++;
+         
+       }else if(index < length){
+       
          while(currentNode.next){
             currentNode = currentNode.next;
             currentIndex++;
@@ -118,12 +121,11 @@ function LinkedList() {
               previousNode = currentNode;
 
               length++;
-            }else if(index >= length || index < length){
-               false;
             }
           }
          newNode.next = previousNode.next;
          previousNode.next = newNode;
+      }else{
+        return false
       }
-    }
 }
