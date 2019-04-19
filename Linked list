@@ -106,8 +106,7 @@ function LinkedList() {
         let newNode = new Node(element);
         
        if(index == 0){
-         let obj = head;
-         newNode.next = obj.next;
+         newNode.next = currentNode.next;
          currentNode.next = newNode;
          length++;
          
