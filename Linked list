@@ -51,7 +51,7 @@ function LinkedList() {
         
         /* let nextElem = head;
            let prev;
-           while(nextElem.element !== element){
+           while(nextElem.element !== element){ // not so deep down
                     prev = nextElem;
                     nextElem = nextElem.next
                 }
