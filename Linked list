@@ -94,4 +94,23 @@ function LinkedList() {
      }
      return element
   }
+    this.removeAt = (index) => {
+      let currentIndex = 0;
+      let currentNode = head;
+      let prev;
+
+      while(currentNode.next){
+        currentNode = currentNode.next;
+        currentIndex++;
+        if(index === currentIndex){
+          prev = currentNode;
+          currentNode = currentNode.next;
+          length--;
+          return prev.element;
+        }else if(index >= length || index < length){
+          return null;
+        }
+      }
+      prev.next = currentNode.next; 
+  }
 }
