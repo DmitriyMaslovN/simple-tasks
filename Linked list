@@ -61,4 +61,37 @@ function LinkedList() {
     length--;
 
   };
+  
+   this.indexOf = (element) => { // start index from 0, return index
+    let objLength = 0;
+    let index;
+    let currentNode = head;
+     console.log('ssss')
+    while(currentNode.next){
+      currentNode = currentNode.next;
+      objLength++
+      
+      if(currentNode.element === element){
+        
+        index = objLength;
+      }else{
+        index = -1;
+      }
+    }
+    return index
+  }
+  
+   this.elementAt = (index) => { // start index from 0, return element
+      let objLength = 0;
+      let element;
+      let currentHead = head;
+      while(currentHead.next){
+        currentHead = currentHead.next;
+        objLength++
+        if(objLength === index){
+          element = currentHead.element;
+        }
+     }
+     return element
+  }
 }
