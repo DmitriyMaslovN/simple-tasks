@@ -49,6 +49,14 @@ function LinkedList() {
           } 
         }
         
+        /* let nextElem = head;
+           let prev;
+           while(nextElem.element !== element){
+                    prev = nextElem;
+                    nextElem = nextElem.next
+                }
+           prev.next = nextElem.next;
+        */
       }
     length--;
 
