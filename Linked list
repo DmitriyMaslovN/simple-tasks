@@ -81,36 +81,49 @@ function LinkedList() {
     return index
   }
   
-   this.elementAt = (index) => { // start index from 0, return element
-      let objLength = 0;
-      let element;
-      let currentHead = head;
-      while(currentHead.next){
-        currentHead = currentHead.next;
-        objLength++
-        if(objLength === index){
-          element = currentHead.element;
-        }
+     this.elementAt = (index) => {
+    let objLength = 0;
+     let element;
+   let currentHead = head;
+     if(index === 0){
+       element = currentHead.element; // the first elem
+     }else{
+     while(currentHead.next){
+       currentHead = currentHead.next;
+       objLength++
+       if(objLength === index){
+         element = currentHead.element;
+       }
      }
+    }
      return element
   }
-    this.removeAt = (index) => {
-      let currentIndex = 0;
-      let currentNode = head;
-      let prev;
+   
+     this.addAt = (index, element) => { // push after elem, +1 to find elem
+        let currentIndex = 0;
+        let currentNode = head;
+        let previousNode;
+        let newNode = new Node(element);
+       if(index == 0){
+         let obj = head;
+         newNode.next = obj.next;
+         currentNode.next = newNode;
+         console.log(head)
+       }else{
+         while(currentNode.next){
+            currentNode = currentNode.next;
+            currentIndex++;
 
-      while(currentNode.next){
-        currentNode = currentNode.next;
-        currentIndex++;
-        if(index === currentIndex){
-          prev = currentNode;
-          currentNode = currentNode.next;
-          length--;
-          return prev.element;
-        }else if(index >= length || index < length){
-          return null;
-        }
+            if(index === currentIndex){
+              previousNode = currentNode;
+
+              length++;
+            }else if(index >= length || index < length){
+               false;
+            }
+          }
+         newNode.next = previousNode.next;
+         previousNode.next = newNode;
       }
-      prev.next = currentNode.next; 
-  }
+    }
 }
