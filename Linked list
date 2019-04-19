@@ -16,7 +16,7 @@ function LinkedList() {
   };
 
   this.add = function(element){
-    var node = new Node(element);
+    let node = new Node(element);
     if(head === null){
         head = node;
     } else {
@@ -64,36 +64,33 @@ function LinkedList() {
   
    this.indexOf = (element) => { // start index from 0, return index
     let objLength = 0;
-    let index;
+    let index = -1;
     let currentNode = head;
-     console.log('ssss')
+    
     while(currentNode.next){
       currentNode = currentNode.next;
       objLength++
       
       if(currentNode.element === element){
-        
         index = objLength;
-      }else{
-        index = -1;
       }
     }
     return index
   }
   
      this.elementAt = (index) => {
-    let objLength = 0;
-     let element;
-   let currentHead = head;
-     if(index === 0){
-       element = currentHead.element; // the first elem
-     }else{
-     while(currentHead.next){
+      let objLength = 0;
+      let element;
+      let currentHead = head;
+      if(index === 0){
+        element = currentHead.element; // the first elem
+      }else{
+      while(currentHead.next){
        currentHead = currentHead.next;
        objLength++
-       if(objLength === index){
-         element = currentHead.element;
-       }
+        if(objLength === index){
+           element = currentHead.element;
+        }
      }
     }
      return element
@@ -105,12 +102,12 @@ function LinkedList() {
         let previousNode;
         let newNode = new Node(element);
         
-       if(index == 0){
-         newNode.next = currentNode.next;
-         currentNode.next = newNode;
-         length++;
+        if(index == 0){
+           newNode.next = currentNode.next;
+           currentNode.next = newNode;
+           length++;
          
-       }else if(index < length){
+        }else if(index < length){
        
          while(currentNode.next){
             currentNode = currentNode.next;
@@ -118,7 +115,6 @@ function LinkedList() {
 
             if(index === currentIndex){
               previousNode = currentNode;
-
               length++;
             }
           }
