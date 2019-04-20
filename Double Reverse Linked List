@@ -27,7 +27,7 @@ var DoublyLinkedList = function() {
       let head = this.head;
       this.tail = head;
 
-        while(head !== null){
+        while(head){
          let prev = head.prev;
          head.prev = head.next;
          head.next = prev;
