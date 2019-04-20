@@ -32,7 +32,7 @@ var DoublyLinkedList = function() {
          head.prev = head.next;
          head.next = prev;
          
-        if (head.prev) {
+        if (head.prev !== null) { // first elem in list
             head = head.prev;
         } else {
             this.head = head; 
