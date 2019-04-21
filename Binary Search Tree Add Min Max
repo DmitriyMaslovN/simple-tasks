@@ -81,9 +81,67 @@ function BinarySearchTree() {
             }else if(val !== currNode.value) {
               truth = false
             };
+           }
+            return truth;
         }
-        return truth;
     
+      this.findMinHeight = (root) => {
+        if(!root){
+            root = this.root;
+        }
+        if(!root){
+            return -1;
+        }
+        if(root.left === null && root.right === null){
+            return 0;
+        }
+        if(root.left === null){
+            return this.findMinHeight(root.right)  + 1;
+        }
+        if(root.right === null){
+            return this.findMinHeight(root.left) + 1;
+        }
+
+        return Math.min(this.findMinHeight(root.right), this.findMinHeight(root.left)) + 1;
+                
+       }
+
+   this.findMaxHeight = (root) => {
+       if(!root){
+            root = this.root;
+        }
+        if(!root){
+            return -1;
+        }
+        if(root.left === null && root.right === null){
+            return 0;
+        }
+        if(root.left === null){
+            return this.findMaxHeight(root.right) + 1;
+        }
+        if(root.right === null){
+            return this.findMaxHeight(root.left) + 1;
+        }
+       
+        return Math.max(this.findMaxHeight(root.right), this.findMaxHeight(root.left)) + 1;
+        
+    }
+
+    this.isBalanced = (root) => {
+        if(!root) root = this.root;
+        if(!root) return false;
+
+        let leftHeight = this.findMaxHeight(root.left);
+        let rightHeight = this.findMaxHeight(root.right);
+        
+        let balanced = rightHeight - leftHeight;
+
+        if(balanced >= 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 let bst = new BinarySearchTree()
