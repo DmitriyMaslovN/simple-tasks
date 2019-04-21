@@ -136,7 +136,7 @@ function BinarySearchTree() {
         
         let balanced = rightHeight - leftHeight;
 
-        if(balanced >= 1){
+        if(balanced <= 1){
             return true;
         }else{
             return false;
