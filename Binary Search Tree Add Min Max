@@ -1,0 +1,75 @@
+var displayTree = (tree) => console.log(JSON.stringify(tree, null, 2));
+function Node(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+}
+function BinarySearchTree() {
+    this.root = null;
+
+    this.add = (value) => {
+      let int = 0;
+        if(Number.isInteger(value)){
+           int = value
+        }
+      let node = new Node(int);
+        if(!this.root){
+            this.root = node; // first value
+        }else{
+            let currNode = this.root;
+            while(currNode){
+                if(node.value < currNode.value){
+                    if(!currNode.left){
+                        currNode.left = node; // if  left = null;
+                        break;
+                    }
+                    currNode = currNode.left; // if the same left in current node
+                }else if(node.value > currNode.value){
+                    if(!currNode.right){
+                        currNode.right = node;
+                        break;
+                    }
+                    currNode = currNode.right;
+                }else{
+                    break;  
+                }
+            }
+        }
+      return this.root
+    }
+
+  this.findMin = (node) => {
+    if(!node){
+      node = this.root;
+    }
+    if(!node){
+      return null;
+    }
+    
+    while(node.left){
+      node = node.left; // iteration down
+    }
+    return node.value // min value
+  }
+  
+  this.findMin = (node) => {
+    if(!node){
+      node = this.root;
+    }
+    if(!node){
+      return null;
+    }
+    
+    while(node.right){
+      node = node.right; // iteration down
+    }
+    return node.value // max value
+  }
+}
+
+let bst = new BinarySearchTree()
+
+console.log(bst.add(25))
+console.log(bst.add(15)) // left
+console.log(bst.add(35)) // right
+console.log(bst.add(45)) // value 25  right.value 35 right.right.value 45
