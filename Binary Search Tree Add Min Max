@@ -65,11 +65,25 @@ function BinarySearchTree() {
     }
     return node.value // max value
   }
+  
+   this.isPresent = (val) => {
+
+        let currNode = this.root;
+        
+        while(currNode){
+            if(val === currNode.value) return true;
+            if(val < currNode.value) currNode = currNode.left; // left iteration
+            if(val > currNode.value) currNode = currNode.right;
+        }
+        return false;
+    }
 }
 
 let bst = new BinarySearchTree()
 
-console.log(bst.add(25))
-console.log(bst.add(15)) // left
-console.log(bst.add(35)) // right
-console.log(bst.add(45)) // value 25  right.value 35 right.right.value 45
+bst.add(25);
+bst.add(15); // left
+bst.add(35); // right
+bst.add(45); // value 25  right.value 35 right.right.value 45
+
+bst.isPresent(35); // true
