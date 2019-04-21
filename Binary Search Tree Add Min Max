@@ -142,6 +142,51 @@ function BinarySearchTree() {
             return false;
         }
     }
+    
+    this.inorder = () => {
+        let node = this.root;
+        if(!node) return null;
+        let arrRes = [];
+
+        const searchIn = (root) => {
+           if(root.left) searchIn(root.left); // start at the left most node
+            arrRes.push(root.value);
+            if(root.right) searchIn(root.right); // end right most node
+        }
+
+        searchIn(node);
+        return arrRes;        
+    }
+
+    this.preorder = () => {
+        let node = this.root;
+        if(!node) return null;
+        let arrRes = [];
+
+        const searchPre = (root) => {
+            arrRes.push(root.value); // explore all the roots before leaves
+            if(root.left) searchPre(root.left);
+            if(root.right)searchPre(root.right);
+        }
+
+        searchPre(node);
+        return arrRes;
+    }
+
+    this.postorder = () => {
+        let node = this.root;
+        if(!node) return null;
+        let arrRes = [];
+
+        const searchPost = (root) => {
+            if(root.left) searchPost(root.left);
+            if(root.right) searchPost(root.right);
+            arrRes.push(root.value); // all leaves before the roots
+        }
+
+        searchPost(node);
+        return arrRes;
+    }
 }
 
 let bst = new BinarySearchTree()
