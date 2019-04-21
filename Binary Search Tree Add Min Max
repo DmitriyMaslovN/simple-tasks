@@ -43,7 +43,7 @@ function BinarySearchTree() {
       node = this.root;
     }
     if(!node){
-      return null;
+      return -1;
     }
     
     while(node.left){
@@ -52,12 +52,12 @@ function BinarySearchTree() {
     return node.value // min value
   }
   
-  this.findMin = (node) => {
+  this.findMax = (node) => {
     if(!node){
       node = this.root;
     }
     if(!node){
-      return null;
+      return -1;
     }
     
     while(node.right){
@@ -70,13 +70,20 @@ function BinarySearchTree() {
 
         let currNode = this.root;
         
-        while(currNode){
-            if(val === currNode.value) return true;
-            if(val < currNode.value) currNode = currNode.left; // left iteration
-            if(val > currNode.value) currNode = currNode.right;
+        let truth = false;
+       while(currNode){
+            if(val === currNode.value) {
+              truth =  true;
+            }else if(val < currNode.value){
+              currNode = currNode.left; // left iteration
+            }else if(val > currNode.value){
+              currNode = currNode.right;
+            }else if(val !== currNode.value) {
+              truth = false
+            };
         }
-        return false;
-    }
+        return truth;
+    
 }
 
 let bst = new BinarySearchTree()
@@ -87,3 +94,4 @@ bst.add(35); // right
 bst.add(45); // value 25  right.value 35 right.right.value 45
 
 bst.isPresent(35); // true
+bst.isPresent(100); // false
